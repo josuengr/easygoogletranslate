@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>easygoogletranslatewiget</title>
+</head>
+<body>
+  <div class="content">
+    Hola Mundo
+  </div>
+  <button type="button" name="button" onclick="gt_translate('en')"> Translate</button>
+  <!---->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=gt_init"></script>
+  <script type="text/javascript">
+  /* Static functions */
+  function gt_translate(lang){
+    var gt_iframe = document.createElement('iframe');
+    gt_iframe.setAttribute('id','g_trans');
+    gt_iframe.style.display='none';
+    gt_iframe.src=location.href+"#googtrans("+pagelang+"|"+lang+")";
+    document.body.appendChild(gt_iframe);
+    document.querySelector('#g_trans').addEventListener("load",function(){ location.reload() })
+  }
+  function gt_init() {
+    window.pagelang='es'; //Global var to set defaul Page Language
+    new google.translate.TranslateElement({pageLanguage:pagelang,layout: google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');
+  }
+  </script>
+</body>
+</html>
